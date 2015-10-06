@@ -1,24 +1,19 @@
 
 #include <iostream>
 #include <chrono>
-#include "SortingCompetition.h"
+#include "sortingcompetition.h"
 
 int main(int argc, char** argv)
 {
-    /*if (argc != 3)
-    {
-        std::cerr << "Invalid arguments" << std::endl;
-        std::cerr << "Usage: ./a.out <input file> <output file>" << std::endl;
-        return 1;
-    }
-    */
+
+    cout << endl << endl << "Inside Main" << endl << endl;
 
     //Number of times to run sort
     const int NUM_REPS = 10;
     unsigned int totalMilliseconds = 0;
 
     //Create the sorter object and load the data from a file
-    SortingCompetition sorter(argv[1]);
+    sortingcompetition sorter(argv[1]);
     if (!sorter.readData())
     {
         std::cerr << "Error reading data" << std::endl;
@@ -48,4 +43,5 @@ int main(int argc, char** argv)
     sorter.outputData(argv[2]);
     std::cout << "Average sorting time: " << totalMilliseconds / NUM_REPS << " milliseconds" << std::endl;
 }
+
 

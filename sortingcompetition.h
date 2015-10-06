@@ -5,29 +5,21 @@
 
 using namespace std;
 
-class SortingCompetition
+class sortingcompetition
 {
 
     private:
 
     string inFile;
-    vector<char*> wordIn;
-    vector<char*> wordCopy;
+    vector<string> wordIn;
+    vector<string> wordCopy;
 
-    void selectionSortLen(vector<char*>&, int, int);
-    void selectionSortAlph(vector<char*>&, vector<char*>::iterator, vector<char*>::iterator);
-    void insertselectionSortLen(vector<char*>&, int, int);
-    void insertselectionSortAlph(vector<char*>&, vector<char*>::iterator, vector<char*>::iterator);
-
-
-    void quickSortLen(vector<char*>&, int, int);
-    void quickSortAlph(vector<char*>&, vector<char*>::iterator, vector<char*>::iterator);
-    void insertSortLen(vector<char*>&, int, int);
-    void insertSortAlph(vector<char*>&, vector<char*>::iterator, vector<char*>::iterator);
+    void selectionSortLen(vector<string>&, int);
+    void selectionSortAlph(vector<string>&, int);
 
     public:
 
-    SortingCompetition(const string& inputFileName);
+    sortingcompetition(const string& inputFileName);
     void setFileName(const string& inputFileName);
     bool readData();
 
