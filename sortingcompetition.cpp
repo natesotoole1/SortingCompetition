@@ -5,7 +5,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <stdio.h>
-
+//USED THE SELECTION SORT ALGORITHM PROVIDED ONLINE @ http://cforbeginners.com/ssort.html
 using namespace std;
 
 
@@ -24,7 +24,6 @@ void sortingcompetition::setFileName(const string& inputFileName){
 //reads the words from the file and stores it in a vector
 bool sortingcompetition::readData()
 {
-    cout << "Inside read Data!" << endl << endl;
 
     ifstream input;
     input.open(inFile);
@@ -32,24 +31,19 @@ bool sortingcompetition::readData()
     {
         cout << inFile << " couldn't be opened" << endl;
         return false;
-    }
+     }
 
-    string temp;
     string word;
-
 
     //Put inputfile into a vector
     while(input.is_open())
     {
 
-        input >> temp;
-        word = temp;
+        input >> word;
 
-        //Push word to wordIn string
+
+        //puts word in vector
         wordIn.push_back(word);
-
-        //POSSIBLY DELETE THE STRING
-        //POSSIBLY REINITIALIZE THE STRING
 
         //close file if at end
         if(input.eof())
@@ -81,25 +75,26 @@ bool sortingcompetition::prepareData()
 //for selection sort
 void sortingcompetition::sortData()
 {
-    int numWords = wordCopy.size();
+    int numWords = wordCopy.size(); //determine number of words in vector
 
     //Sort by length
-    selectionSortLen(wordCopy, numWords - 1);
+    selectionSortLength(wordCopy, numWords - 1);
+
     //Sort by alphabet
-    selectionSortAlph(wordCopy, numWords - 1);    
+    selectionSortAlphabet(wordCopy, numWords - 1);
 
 }
 
 //sort by length
 //for selection sort
-void sortingcompetition::selectionSortLen(vector<string>& words, int right)
+void sortingcompetition::selectionSortLength(vector<string>& words, int totalWords)
 {
 
 
-    int n = right + 1;
+    int n = totalWords + 1;
        int pos_min;
-       string temp = " ";
-       //pos_min is short for position of min
+       string temp;
+       //pos_min is short for position of minimum
 
            for (int i=0; i < n-1; i++)
            {
@@ -121,18 +116,15 @@ void sortingcompetition::selectionSortLen(vector<string>& words, int right)
                        words[pos_min] = temp;
                    }
            }
-           for(int i = 0; i < n; i++)
-               {
-                   cout << endl << "Word in element: " << i << " is: " << words[i] << endl;
-               }
+
  }
 //sort by alphabet
 //for selection sort
-void sortingcompetition::selectionSortAlph(vector<string>& words, int right)
+void sortingcompetition::selectionSortAlphabet(vector<string>& words, int totalWords)
 {
-    int n = right + 1;
+    int n = totalWords + 1;
     int pos_min;
-    string temp = " ";
+    string temp;
     //pos_min is short for position of min
 
         for (int i=0; i < n-1; i++)
@@ -156,12 +148,6 @@ void sortingcompetition::selectionSortAlph(vector<string>& words, int right)
                 }
         }
 
-    cout << endl << "SORTED ARRAY" << endl << endl;
-
-    for(int i = 0; i < n; i++)
-    {
-        cout << endl << "Word in element: " << i << " is: " << words[i] << endl;
-    }
 }
 
 
@@ -180,7 +166,7 @@ void sortingcompetition::outputData(const string& outputFileName)
     numWords = wordCopy.size();
 
     //Output words
-    for(unsigned int i = 0; i < numWords; i++)
+    for(int i = 0; i < numWords; i++)
     {
         string outputWord = wordCopy[i];
         outputFile <<  outputWord << " " << endl << endl;

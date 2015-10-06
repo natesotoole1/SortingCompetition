@@ -14,8 +14,8 @@ class sortingcompetition
     vector<string> wordIn;
     vector<string> wordCopy;
 
-    void selectionSortLen(vector<string>&, int);
-    void selectionSortAlph(vector<string>&, int);
+    void selectionSortLength(vector<string>&, int);
+    void selectionSortAlphabet(vector<string>&, int);
 
     public:
 
